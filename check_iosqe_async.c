@@ -10,14 +10,14 @@ int main() {
     struct io_uring_cqe *cqe;
     int ret;
 
-    // 初始化 io_uring
+    // init io_uring queue with 4 entries
     ret = io_uring_queue_init(4, &ring, 0);
     if (ret) {
         fprintf(stderr, "io_uring_queue_init failed: %d\n", ret);
         return 1;
     }
 
-    // 获取一个提交队列条目
+    // get a submission queue entry
     sqe = io_uring_get_sqe(&ring);
     if (!sqe) {
         fprintf(stderr, "Failed to get submit queue entry\n");
@@ -25,11 +25,11 @@ int main() {
         return 1;
     }
 
-    // 设置一个 NOP 操作，使用 IOSQE_ASYNC 标志
+    // set up a NOOP operation, with IOSQE_ASYNC flag
     io_uring_prep_nop(sqe);
     sqe->flags |= IOSQE_ASYNC;
 
-    // 提交操作
+    // submit the operation
     ret = io_uring_submit(&ring);
     if (ret <= 0) {
         fprintf(stderr, "Failed to submit to io_uring: %d\n", ret);
@@ -37,7 +37,7 @@ int main() {
         return 1;
     }
 
-    // 等待完成
+    // wait for the completion
     ret = io_uring_wait_cqe(&ring, &cqe);
     if (ret) {
         fprintf(stderr, "Error waiting for completion: %d\n", ret);
@@ -45,7 +45,7 @@ int main() {
         return 1;
     }
 
-    // 检查结果
+    // check the result
     if (cqe->res < 0) {
         fprintf(stderr, "IO operation failed: %s\n", strerror(-cqe->res));
     } else {
