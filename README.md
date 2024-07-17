@@ -1,6 +1,3 @@
-要为上述项目编写一个 `README.md` 文件，我们需要包括项目的简介、用法、编译过程，以及如何使用 `liburing`。这里是一个示例 `README.md`，适用于您的项目。
-
-```markdown
 # io-uring Feature Check
 
 This repository contains tools to check for specific features in `io_uring` on Linux systems. It includes programs to determine if certain `io_uring` capabilities such as `IORING_FEAT_FAST_POLL` and `IOSQE_ASYNC` are supported by the kernel.
