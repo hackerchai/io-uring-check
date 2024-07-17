@@ -1,0 +1,30 @@
+# Compiled Object files
+*.o
+
+# Precompiled Headers
+*.gch
+
+# Compiled Dynamic libraries
+*.so
+
+# Compiled Static libraries
+*.lib
+
+# Binary executables
+check_io_uring_support
+check_io_uring_features
+check_iosqe_async
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Operating System generated files
+.DS_Store
+Thumbs.db
+
+# Build directories
+build/
+out/
