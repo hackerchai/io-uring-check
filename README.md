@@ -54,13 +54,13 @@ After compilation, you can run the programs to check `io_uring` support and feat
 - **Check `io_uring` support**:
 
     ```bash
-    make test_io_uring_support
+    make test_iouring_support
     ```
 
 - **Check `io_uring` features**:
 
     ```bash
-    make test_io_uring_features
+    make test_iouring_features
     ```
 
 - **Check `IOSQE_ASYNC` support**:
